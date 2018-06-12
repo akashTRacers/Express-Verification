@@ -1,0 +1,28 @@
+{
+  "name": "express-verification",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/akashTRacers/Express-Verification.git"
+  },
+  "author": "Akash Jain",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/akashTRacers/Express-Verification/issues"
+  },
+  "homepage": "https://github.com/akashTRacers/Express-Verification#readme",
+  "dependencies": {
+    "express": "^4.16.3",
+    "express-validator": "^5.2.0",
+    "http": "0.0.0",
+    "path": "^0.12.7"
+  }
+}
