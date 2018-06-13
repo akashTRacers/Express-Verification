@@ -4,7 +4,7 @@ const initRoutes = (app) => {
 
   console.log("inside index.js");
   app.use('/', openHome());
-  app.use('/verify', initVerification()); 
+  app.use('/submit', initVerification()); 
 }
 
 module.exports=initRoutes;
