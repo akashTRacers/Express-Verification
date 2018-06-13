@@ -1,10 +1,10 @@
 const express = require("express");
 var router = express.Router()
-const verificationController = require("../controllers/verification.js");
+//const verificationController = require("../controllers/verification.js");
 
-function validateDetails(req,res,next){
-    console.log("inside verification routes");
-     verificationRouter = express.Router(); 
+const validateDetails = (req,res,next) => {
+    console.log("inside validations");
+    verificationRouter = express.Router(); 
     req.check('email', 'Invalid email address').isEmail();
     req.check('password', 'Password is invalid').isLength({min: 4}).equals(req.body.confirmPassword);
     req.check('mobile','enter valid mobile no').isNumeric();
@@ -16,8 +16,12 @@ function validateDetails(req,res,next){
         res.redirect('/');
     }
     else{
-        verificationRouter.post('',verificationController.insertDetails);
+     next();
     }
+    /*
+    else{
+        verificationRouter.post('',verificationController.insertDetails);
+    }*/
 
 }
-module.exports=router;
+module.exports = {validateDetails};
