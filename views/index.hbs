@@ -13,22 +13,26 @@
            </ul>
        </section>
     {{/if}}
-<form action="/submit" method="post">
-    <div class="input">
-        <lable for="email">E-mail</lable>
-        <input type="text" id="email" name="email">
-    </div>
+    <form action="/submit" method="post">
+        <div class="input">
+            <lable for="email">E-mail</lable>
+            <input type="text" id="email" name="email">
+        </div>
+        <div class="input">
+            <lable for="mobile">Mobile Number</lable>
+            <input type="text" id="mobile" name="mobile">
+        </div>
 
-    <div class="input">
-        <lable for="password">password</lable>
-        <input type="password" id="password" name="password">
-    </div>
-    
-    <div class="input">
-        <lable for="confirmPassword">confirsmPassword</lable>
-        <input type="password" id="confirmPassword" name="confirmPassword">
-    </div>
-    <button type="submit">Sign up</button>
+        <div class="input">
+            <lable for="password">password</lable>
+            <input type="password" id="password" name="password">
+        </div>
+        
+        <div class="input">
+            <lable for="confirmPassword">confirsmPassword</lable>
+            <input type="password" id="confirmPassword" name="confirmPassword">
+        </div>
+        <button type="submit">Sign up</button>
 
-</form>
-{{/if}}
+    </form>
+    {{/if}}

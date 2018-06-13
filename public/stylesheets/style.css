@@ -21,11 +21,7 @@ body {
     background: #3498db;
     cursor: pointer;
   }
-  
-  form button:hover {
-    background: #2980b9;
-  }
-  
+ 
   .errors {
     background: #e79892;
     padding: 5px;

@@ -2,16 +2,17 @@ var express = require('express');
 var router = express.Router();
 
 /* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Form Validation', success: req.session.success, errors: req.session.errors });
-  req.session.errors = null;
+ router.get('/', function(req, res, next) {
+   res.render('index', { title: 'Form Validation', success: req.session.success, errors: req.session.errors });
+   req.session.errors = null;
+   req.session.destroy();
 });
 
 router.post('/submit', function(req, res, next) {
     //check validity
   req.check('email', 'Invalid email address').isEmail();
   req.check('password', 'Password is invalid').isLength({min: 4}).equals(req.body.confirmPassword);
-  
+  req.check('mobile','enter valid mobile no').isNumeric();
 
   var errors=req.validationErrors();
   if(errors){
@@ -23,6 +24,7 @@ router.post('/submit', function(req, res, next) {
 
   }
   res.redirect('/');
+ 
  
 }) 
 module.exports = router;

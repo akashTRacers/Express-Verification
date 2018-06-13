@@ -1,1 +1,1 @@
-require('./app.js')
+require('./lib/app.js')
