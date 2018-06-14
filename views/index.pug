@@ -1,0 +1,36 @@
+h2= title
+link(rel='stylesheet', href='/stylesheets/style.css')
+link(rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/spectre.css/0.5.1/spectre.min.css')
+if success
+  section.success
+  h2  successful validation
+else 
+    if errors
+        section.errors
+            table
+                tr
+                    th Error
+                each error1 in errors
+                    tr
+                        td #{error1.message}  
+                        td #{error1.msg}
+form(action='/submit', method='post')
+  .input
+    lable(for='name') Full Name
+    input#email(type='text', name='name', value="")  
+  .input
+    lable(for='email') E-mail
+    input#email(type='text', name='email')
+  .input
+    lable(for='mobile') Mobile Number
+    input#mobile(type='text', name='mobile')
+  .input
+    lable(for='password') password
+    input#password(type='password', name='password')
+  .input
+    lable(for='confirmPassword') confirsmPassword
+    input#confirmPassword(type='password', name='confirmPassword')
+  button(type='submit') Sign up
+
+    
+  
