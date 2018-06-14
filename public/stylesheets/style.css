@@ -41,4 +41,6 @@ body {
     background: #80cca0;
     padding: 5px;
   }
-  
+  table {
+    border: 2px solid black;
+   }
