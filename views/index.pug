@@ -17,24 +17,38 @@ else
                     else if (errors)     
                         each val in errors
                           tr
-                            td #{val.msg}
-                            
+                            td #{val.msg}                            
 form(action='/submit', method='post')
   .input
     lable(for='name') Full Name
-    input#email(type='text', name='name', value="")  
+      if(errors||errors_db)
+        input#name(type='text', name='name', value=body.name)  
+      else
+        input#name(type='text', name='name') 
   .input
     lable(for='email') E-mail
-    input#email(type='text', name='email')
+      if(errors||errors_db)
+        input#email(type='text', name='email', value=body.email)
+      else
+        input#email(type='text', name='email')
   .input
     lable(for='mobile') Mobile Number
-    input#mobile(type='text', name='mobile')
+      if(errors||errors_db)
+        input#mobile(type='text', name='mobile', value=body.mobile)
+      else
+        input#mobile(type='text', name='mobile')
   .input
     lable(for='password') password
-    input#password(type='password', name='password')
+      if(errors||errors_db)
+        input#password(type='password', name='password',value=body.password)
+      else
+         input#password(type='password', name='password')
   .input
     lable(for='confirmPassword') confirsmPassword
-    input#confirmPassword(type='password', name='confirmPassword')
+      if(errors||errors_db)
+        input#confirmPassword(type='password', name='confirmPassword', value=body.confirmPassword)
+      else
+        input#confirmPassword(type='password', name='confirmPassword')
   button(type='submit') Sign up
 
     

@@ -12,17 +12,22 @@ let studentSchema= mongoose.Schema({
         },
    email:{
     type: String,
-    validate: function(email) {
-        return /^[a-z0-9.!#$%&’*+\/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test(email)
-      } 
+    validate: {
+        validator: function(email) {
+          return /^[a-zA-Z0-9.!#$%&’*+\/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test(email)
+        },
+        message: '{VALUE} is not a valid email!'
+      }
    },
    mobile: {
     type: String,
     required:true,
     validate: {
       validator: function(v) {
-        return /\d{3}-\d{3}-\d{4}/.test(v);
+        return /^(\+\d{1,3}[- ]?)?\d{10}$/.test(v)
       },
+      minlength: 10,
+      maxlength: 10,
       message: '{VALUE} is not a valid phone number!'
     }
   },

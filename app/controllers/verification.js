@@ -16,17 +16,8 @@ class verificationController{
 
         student1.save((err,result) => {
         if (err) {
-            console.log(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>",err.errors['mobile'].message,"<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<");
-           /* Shubham sir
-
-            const result = Object.keys(err).map(key => {
-                const obj = {};
-                obj[key] = err[key];
-                return obj;
-            });
-            */
-           //console.log(err.errors['mobile'].message.constructor === Array)
-            console.log(typeof(err.errors['mobile'].message)=='string');
+            //console.log(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>",err.errors['mobile'].message,"<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<");
+            //console.log(typeof(err.errors['mobile'].message)=='string');
                 var result = Object.keys(err).map(function(key) {
                 return [err[key]];
                 });
