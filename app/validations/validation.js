@@ -10,7 +10,7 @@ const validateDetails = (req,res,next) => {
     req.check('mobile','enter valid mobile no').isLength({min:4});
 
     var errors=req.validationErrors();
-    console.log(errors);
+    console.log("***************",typeof(errors));
     if(errors){
         req.session.errors=errors;
         req.session.success=false;

@@ -5,15 +5,20 @@ if success
   section.success
   h2  successful validation
 else 
-    if errors
+    if errors||errors_db
         section.errors
             table
                 tr
                     th Error
-                each error1 in errors
-                    tr
-                        td #{error1}  
-                        td #{error1.msg}
+                    if (errors_db)
+                      each val in errors_db
+                        tr
+                          td #{val}      
+                    else if (errors)     
+                        each val in errors
+                          tr
+                            td #{val.msg}
+                            
 form(action='/submit', method='post')
   .input
     lable(for='name') Full Name

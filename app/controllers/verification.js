@@ -16,20 +16,23 @@ class verificationController{
 
         student1.save((err,result) => {
         if (err) {
-            console.log(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>",err.message,"<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<");
+            console.log(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>",err.errors['mobile'].message,"<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<");
            /* Shubham sir
+
             const result = Object.keys(err).map(key => {
                 const obj = {};
                 obj[key] = err[key];
                 return obj;
             });
             */
-           
+           //console.log(err.errors['mobile'].message.constructor === Array)
+            console.log(typeof(err.errors['mobile'].message)=='string');
                 var result = Object.keys(err).map(function(key) {
                 return [err[key]];
                 });
-            console.log(result[2], "**********")
-            res.render('index',{errors:result[2], body:req.body});
+            console.log(result['mobile'], "**********")
+
+            res.render('index',{errors_db:err.errors, body:req.body});
 
         }
         else{
