@@ -24,19 +24,17 @@ let studentSchema= mongoose.Schema({
         setTimeout(function() {
           var phoneRegex = /\d{3}-\d{3}-\d{4}/;
           var msg = v + ' is not a valid phone number!';
-     
           cb(phoneRegex.test(v), msg);
         }, 5);
       },
-     
+    message: 'Default error message'
     },
     required: [true, 'User phone number required']
   },
      
    
    password:{
-    type: Number,validate: [validateLocalStrategyProperty, 'Please enter correct password']
-    
+    type: Number,
    }
   
 });

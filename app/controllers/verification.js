@@ -1,6 +1,6 @@
 const students= require('../models/students');
 const express = require("express");
-const  path='../views/index.pug';
+//const  path='../views/index.pug';
 const router = express.Router();
 class verificationController{
 
@@ -17,7 +17,20 @@ class verificationController{
         student1.save((err,result) => {
         if (err) {
             console.log(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>",err.message,"<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<");
-            res.render(path,{errors: Object.values(err), body:req.body});
+           /* Shubham sir
+            const result = Object.keys(err).map(key => {
+                const obj = {};
+                obj[key] = err[key];
+                return obj;
+            });
+            */
+           
+                var result = Object.keys(err).map(function(key) {
+                return [err[key]];
+                });
+            console.log(result[2], "**********")
+            res.render('index',{errors:result[2], body:req.body});
+
         }
         else{
         console.log("saved to database");
