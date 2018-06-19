@@ -1,6 +1,10 @@
 h2= title
+head
+  script(src='http://code.jquery.com/jquery-1.9.1.js')
 link(rel='stylesheet', href='/stylesheets/style.css')
 link(rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/spectre.css/0.5.1/spectre.min.css')
+script(src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js")
+#result
 if success
   section.success
   h2  successful validation
@@ -18,7 +22,7 @@ else
                         each val in errors
                           tr
                             td #{val.msg}                            
-form(action='/submit', method='post')
+form(class="form-message" id="formoid"  action='/submit', method='POST')
   .input
     lable(for='name') Full Name
       if(errors||errors_db)
@@ -40,16 +44,32 @@ form(action='/submit', method='post')
   .input
     lable(for='password') password
       if(errors||errors_db)
-        input#password(type='password', name='password',value=body.password)
+        input#password(type='password', name='password')
       else
          input#password(type='password', name='password')
   .input
     lable(for='confirmPassword') confirsmPassword
       if(errors||errors_db)
-        input#confirmPassword(type='password', name='confirmPassword', value=body.confirmPassword)
+        input#confirmPassword(type='password', name='confirmPassword')
       else
         input#confirmPassword(type='password', name='confirmPassword')
-  button(type='submit') Sign up
-
-    
-  
+  button#submit(type='submit' name='submit') Sign up
+script(type="text/javascript").
+ $(document).ready(function(){
+   $("form").submit(function(event){
+    event.preventDefault();
+    var fname=$("#name").val();
+    var email=$("#email").val();
+    var mobile=$("#mobile").val();
+    var password=$("#password").val();
+    var confirmPassword=$("#confirmPassword").val();
+    console.log(fname);
+    $(".form-message").load("/submit",{
+      name:fname,
+      email:email,
+      mobile:mobile,
+      password:password,
+      confirmPassword:confirmPassword
+      })
+   })
+ })  
